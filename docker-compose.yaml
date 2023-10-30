@@ -3,12 +3,13 @@ version: "3.9"
 services:
   docker:
     image: docker:24.0-dind
+    command: ["dockerd", "-H", "tcp://0.0.0.0:2375"]
     privileged: true
   runner:
     image: zhangyuan/github-actions-runner:add-image
     command: run
     environment:
-      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_HOST=tcp://docker:2375
       - REPO_URL
       - REGISTRATION_TOKEN
       - RUNNER_NAME
