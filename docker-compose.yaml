@@ -6,7 +6,7 @@ services:
     command: ["dockerd", "-H", "tcp://0.0.0.0:2375"]
     privileged: true
   runner:
-    image: zhangyuan/github-actions-runner:add-image
+    image: zhangyuan/github-actions-runner:v0.0.1
     command: run
     environment:
       - DOCKER_HOST=tcp://dind:2375
