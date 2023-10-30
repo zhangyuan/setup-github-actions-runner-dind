@@ -4,12 +4,11 @@ services:
   docker:
     image: docker:24.0-dind
     privileged: true
-    volumes:
-      - ./docker/daemon.json:/etc/docker/daemon.json:ro
   runner:
-    build: zhangyuan/github-actions-runner:add-image
+    image: zhangyuan/github-actions-runner:add-image
+    command: run
     environment:
-      - DOCKER_HOST=docker
+      - DOCKER_HOST=tcp://docker:2376
       - REPO_URL
       - REGISTRATION_TOKEN
       - RUNNER_NAME
